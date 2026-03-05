@@ -89,6 +89,7 @@ public class StopServices {
             }
         }
     }
+    
 
     private Double parseLatitude(String raw) {
         Double value = parseDouble(raw);
