@@ -39,7 +39,7 @@ public class GtfsController {
     }
 
     @GetMapping("/stops")
-    public Page<Stop> getStops(Pageable pageable) {
-        return stopRepository.findAll(pageable);
+    public ResponseEntity<Page<Stop>> getStops(Pageable pageable) {
+        return ResponseEntity.ok(stopRepository.findAll(pageable));
     }
 }

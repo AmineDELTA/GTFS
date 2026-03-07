@@ -11,6 +11,8 @@ import java.util.zip.ZipInputStream;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.model.Stop;
@@ -85,12 +87,10 @@ public class StopServices {
                     importStops(zis);
                     break; //stop after processing stops.txt
                 }
-
             }
         }
     }
     
-
     private Double parseLatitude(String raw) {
         Double value = parseDouble(raw);
         if (value == null || value < -90.0 || value > 90.0) {
@@ -118,4 +118,9 @@ public class StopServices {
             return null;
         }
     }
+
+    public Page<Stop> getStops(Pageable pageable) {
+    return stopRepository.findAll(pageable);
 }
+}
+
